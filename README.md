@@ -34,7 +34,7 @@ The easiest way to deploy your Plasmo extension is to use the built-in [bpp](htt
 
 ## Note
 
-If you feel so ennoy when the newtab keep showing, just delete newtab.tsx and another one in plasmo/newtab.tsx. Then, delete the old build and run
+If you feel so annoy when the newtab keep showing, just delete newtab.tsx and another one in plasmo/newtab.tsx. Then, delete the old build and run
 
 ```bash
 pnpm run dev
