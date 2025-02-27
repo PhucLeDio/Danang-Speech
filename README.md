@@ -31,3 +31,12 @@ This should create a production bundle for your extension, ready to be zipped an
 ## Submit to the webstores
 
 The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+
+## Note
+
+If you feel so ennoy when the newtab keep showing, just delete newtab.tsx and another one in plasmo/newtab.tsx. Then, delete the old build and run
+
+```bash
+pnpm run dev
+```
+It should be work!
