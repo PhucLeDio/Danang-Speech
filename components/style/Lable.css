@@ -1,0 +1,29 @@
+.scrollable {
+	width: 100%;
+	max-height: 150px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	/* Tùy chỉnh thanh cuộn */
+	scrollbar-width: thin; /* Firefox */
+	scrollbar-color: #ffb800 #e7d9b6; /* Firefox */
+
+	/* Webkit Scrollbar */
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #e7d9b6;
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #ffb800;
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar-thumb:hover {
+		background: #848b04;
+	}
+}
