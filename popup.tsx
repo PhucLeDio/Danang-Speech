@@ -1,7 +1,7 @@
 import { useFirebase } from "~firebase/hook"
 
 export default function IndexPopup() {
-  const { user, isLoading, onLogin, onLogout } = useFirebase()
+  const { user, isLoading, onLoginWithGoogle, onLoginWithMicrosoft, onLogout } = useFirebase()
 
   return (
     <div
@@ -15,16 +15,18 @@ export default function IndexPopup() {
         Welcome to your <a href="https://www.plasmo.com">Plasmo</a> Extension!
       </h1>
       {!user ? (
-        <button onClick={() => onLogin()}>Log in</button>
+        <>
+          <button onClick={onLoginWithGoogle}>Log in with Google</button>
+          <button onClick={onLoginWithMicrosoft}>Log in with Microsoft</button>
+        </>
       ) : (
-        <button onClick={() => onLogout()}>Log out</button>
+        <button onClick={onLogout}>Log out</button>
       )}
       <div>
         {isLoading ? "Loading..." : ""}
         {!!user ? (
           <div>
-            Welcome to Plasmo, {user.displayName} your email address is{" "}
-            {user.email}
+            Welcome, {user.displayName}. Your email is {user.email}
           </div>
         ) : (
           ""
