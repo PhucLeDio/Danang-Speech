@@ -8,18 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@azure/cosmos':
-        specifier: ^4.2.0
-        version: 4.2.0
-      '@azure/functions':
-        specifier: ^4.7.0
-        version: 4.7.0
-      '@azure/msal-browser':
-        specifier: ^4.5.1
-        version: 4.5.1
-      crypto-js:
-        specifier: ^4.2.0
-        version: 4.2.0
       firebase:
         specifier: 10.7.2
         version: 10.7.2
@@ -32,9 +20,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
-      uuid:
-        specifier: ^11.1.0
-        version: 11.1.0
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@18.2.0)
     devDependencies:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 4.1.1
@@ -42,9 +30,6 @@ importers:
       '@types/chrome':
         specifier: 0.0.258
         version: 0.0.258
-      '@types/crypto-js':
-        specifier: ^4.2.2
-        version: 4.2.2
       '@types/node':
         specifier: 20.11.5
         version: 20.11.5
@@ -66,46 +51,6 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
-
-  '@azure/abort-controller@2.1.2':
-    resolution: {integrity: sha512-nBrLsEWm4J2u5LpAPjxADTlq3trDgVZZXHNKabeXZtpq3d3AbN/KGO82R87rdDz5/lYB024rtEf10/q0urNgsA==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/core-auth@1.9.0':
-    resolution: {integrity: sha512-FPwHpZywuyasDSLMqJ6fhbOK3TqUdviZNF8OqRGA4W5Ewib2lEEZ+pBsYcBa88B2NGO/SEnYPGhyBqNlE8ilSw==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/core-rest-pipeline@1.19.1':
-    resolution: {integrity: sha512-zHeoI3NCs53lLBbWNzQycjnYKsA1CVKlnzSNuSFcUDwBp8HHVObePxrM7HaX+Ha5Ks639H7chNC9HOaIhNS03w==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/core-tracing@1.2.0':
-    resolution: {integrity: sha512-UKTiEJPkWcESPYJz3X5uKRYyOcJD+4nYph+KpfdPRnQJVrZfk0KJgdnaAWKfhsBBtAf/D58Az4AvCJEmWgIBAg==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/core-util@1.11.0':
-    resolution: {integrity: sha512-DxOSLua+NdpWoSqULhjDyAZTXFdP/LKkqtYuxxz1SCN289zk3OG8UOpnCQAz/tygyACBtWp/BoO72ptK7msY8g==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/cosmos@4.2.0':
-    resolution: {integrity: sha512-acfAQTYLxgB/iZK7XvTVYe9NPk6DECEgcIXDQhyn7Uo4dGxeeW5D3YqLjLJrrzND5Iawer3eUQ5/iiLWvTGAxQ==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/functions@4.7.0':
-    resolution: {integrity: sha512-y1caGX6LYrA7msAckQVb/quFOhWHSPiGzWfIML17t0ee2ydpinJTBF+Sti+URfLAH63dtmXJR4meraZkhhK9tw==}
-    engines: {node: '>=18.0'}
-
-  '@azure/logger@1.1.4':
-    resolution: {integrity: sha512-4IXXzcCdLdlXuCG+8UKEwLA1T1NHqUfanhXYHiQTn+6sfWCZXduqbtXDGceg3Ce5QxTGo7EqmbV6Bi+aqKuClQ==}
-    engines: {node: '>=18.0.0'}
-
-  '@azure/msal-browser@4.5.1':
-    resolution: {integrity: sha512-vcva6qA4ytVjg52Ew+RxXGKRuoDMdvNOwT+kECNC36kujYalFQe9B5SNud4WVa/Zk12KFa0bkOHFnjP8cgDv3A==}
-    engines: {node: '>=0.8.0'}
-
-  '@azure/msal-common@15.2.0':
-    resolution: {integrity: sha512-HiYfGAKthisUYqHG1nImCf/uzcyS31wng3o+CycWLIM9chnYJ9Lk6jZ30Y6YiYYpTQ9+z/FGUpiKKekd3Arc0A==}
-    engines: {node: '>=0.8.0'}
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -1848,9 +1793,6 @@ packages:
   '@types/chrome@0.0.258':
     resolution: {integrity: sha512-vicJi6cg2zaFuLmLY7laG6PHBknjKFusPYlaKQ9Zlycskofy71rStlGvW07MUuqUIVorZf8k5KH+zeTTGcH2dQ==}
 
-  '@types/crypto-js@4.2.2':
-    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
-
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
@@ -1929,10 +1871,6 @@ packages:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
-
-  agent-base@7.1.3:
-    resolution: {integrity: sha512-jRR5wdylq8CkOe6hei19GGZnxM6rBGwFl3Bg0YItGDimvjGtAvdZk4Pu6Cl4u4Igsws4a1fd1Vq3ezrhn4KmFw==}
-    engines: {node: '>= 14'}
 
   ansi-escapes@4.3.2:
     resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
@@ -2121,10 +2059,6 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
-  cookie@0.7.2:
-    resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
-    engines: {node: '>= 0.6'}
-
   copy-anything@2.0.6:
     resolution: {integrity: sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==}
 
@@ -2144,9 +2078,6 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
-
-  crypto-js@4.2.0:
-    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
 
   crypto-random-string@4.0.0:
     resolution: {integrity: sha512-x8dy3RnvYdlUcPOjkEHqozhiwzKNSq7GcPuXFbnyMOCHxX8V3OgIg/pYuabl2sbUPfIJaeAQB7PMOK8DFIdoRA==}
@@ -2309,9 +2240,6 @@ packages:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
     engines: {node: '>=8.6.0'}
 
-  fast-json-stable-stringify@2.1.0:
-    resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-
   fastq@1.19.1:
     resolution: {integrity: sha512-GwLTyxkCXjXbxqIhTsMI2Nui8huMPtnxg7krajPJAjnEG/iiOS7i+zCtWGZR9G0NBKbXKh6X9m9UIsYX/N6vvQ==}
 
@@ -2453,17 +2381,9 @@ packages:
   http-parser-js@0.5.9:
     resolution: {integrity: sha512-n1XsPy3rXVxlqxVioEWdC+0+M+SQw0DpJynwtOPo1X+ZlvdzTLtDBIJJlDQTnwZIFJrZSzSGmIOUdP8tu+SgLw==}
 
-  http-proxy-agent@7.0.2:
-    resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==}
-    engines: {node: '>= 14'}
-
   http2-wrapper@2.2.1:
     resolution: {integrity: sha512-V5nVw1PAOgfI3Lmeaj2Exmeg7fenjhRUgz1lPSezy1CuhPYbgQtbQj4jZfEAEMlaL+vupsvhjqCyjzob0yxsmQ==}
     engines: {node: '>=10.19.0'}
-
-  https-proxy-agent@7.0.6:
-    resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
-    engines: {node: '>= 14'}
 
   human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
@@ -2589,9 +2509,6 @@ packages:
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
     hasBin: true
-
-  jsbi@4.3.0:
-    resolution: {integrity: sha512-SnZNcinB4RIcnEyZqFPdGPVgrg2AcnykiBy0sHVJQKHYeaLUvi3Exj+iaPpLnFVkDPZIV4U0yvgC9/R4uEAZ9g==}
 
   jsesc@3.1.0:
     resolution: {integrity: sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==}
@@ -2776,9 +2693,6 @@ packages:
 
   lodash.sortby@4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
-
-  long@4.0.0:
-    resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
 
   long@5.3.1:
     resolution: {integrity: sha512-ka87Jz3gcx/I7Hal94xaN2tZEOPoUOEVftkQqZx2EeQRN7LGdfLlI3FvZ+7WDplm+vK2Urx9ULrvSowtdCieng==}
@@ -3050,9 +2964,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  priorityqueuejs@2.0.0:
-    resolution: {integrity: sha512-19BMarhgpq3x4ccvVi8k2QpJZcymo/iFUcrhPd4V96kYGovOdTsWwy7fxChYi4QY+m2EnGBWSX9Buakz+tWNQQ==}
-
   process@0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
     engines: {node: '>= 0.6.0'}
@@ -3089,6 +3000,11 @@ packages:
 
   react-error-overlay@6.0.9:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
+
+  react-icons@5.5.0:
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
+    peerDependencies:
+      react: '*'
 
   react-refresh@0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
@@ -3178,10 +3094,6 @@ packages:
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
-
-  semaphore@1.1.0:
-    resolution: {integrity: sha512-O4OZEaNtkMd/K0i6js9SL+gqy0ZCBMgUvlSqHKi4IBdjhe7wB8pwztUk1BbZ1fmrvpwFrPbHzqd2w5pTcJH6LA==}
-    engines: {node: '>=0.8.0'}
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -3405,10 +3317,6 @@ packages:
     resolution: {integrity: sha512-6Z7Ma2aVEWisaL6TvBCy7P8rm2LQoPv6dJ7ecIaIixHcwfbJ0x7mWdbcwlIM5IGQxPZSFYeqRCqlOOeKoJYMkw==}
     engines: {node: '>= 4'}
 
-  uuid@11.1.0:
-    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
-    hasBin: true
-
   vue@3.3.4:
     resolution: {integrity: sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==}
 
@@ -3486,69 +3394,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@azure/abort-controller@2.1.2':
-    dependencies:
-      tslib: 2.8.1
-
-  '@azure/core-auth@1.9.0':
-    dependencies:
-      '@azure/abort-controller': 2.1.2
-      '@azure/core-util': 1.11.0
-      tslib: 2.8.1
-
-  '@azure/core-rest-pipeline@1.19.1':
-    dependencies:
-      '@azure/abort-controller': 2.1.2
-      '@azure/core-auth': 1.9.0
-      '@azure/core-tracing': 1.2.0
-      '@azure/core-util': 1.11.0
-      '@azure/logger': 1.1.4
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@azure/core-tracing@1.2.0':
-    dependencies:
-      tslib: 2.8.1
-
-  '@azure/core-util@1.11.0':
-    dependencies:
-      '@azure/abort-controller': 2.1.2
-      tslib: 2.8.1
-
-  '@azure/cosmos@4.2.0':
-    dependencies:
-      '@azure/abort-controller': 2.1.2
-      '@azure/core-auth': 1.9.0
-      '@azure/core-rest-pipeline': 1.19.1
-      '@azure/core-tracing': 1.2.0
-      '@azure/core-util': 1.11.0
-      fast-json-stable-stringify: 2.1.0
-      jsbi: 4.3.0
-      priorityqueuejs: 2.0.0
-      semaphore: 1.1.0
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@azure/functions@4.7.0':
-    dependencies:
-      cookie: 0.7.2
-      long: 4.0.0
-      undici: 5.26.5
-
-  '@azure/logger@1.1.4':
-    dependencies:
-      tslib: 2.8.1
-
-  '@azure/msal-browser@4.5.1':
-    dependencies:
-      '@azure/msal-common': 15.2.0
-
-  '@azure/msal-common@15.2.0': {}
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -5670,8 +5515,6 @@ snapshots:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.16
 
-  '@types/crypto-js@4.2.2': {}
-
   '@types/estree@1.0.6': {}
 
   '@types/filesystem@0.0.36':
@@ -5772,8 +5615,6 @@ snapshots:
   abortcontroller-polyfill@1.7.8: {}
 
   acorn@8.14.0: {}
-
-  agent-base@7.1.3: {}
 
   ansi-escapes@4.3.2:
     dependencies:
@@ -5956,8 +5797,6 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
-  cookie@0.7.2: {}
-
   copy-anything@2.0.6:
     dependencies:
       is-what: 3.14.1
@@ -5984,8 +5823,6 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  crypto-js@4.2.0: {}
 
   crypto-random-string@4.0.0:
     dependencies:
@@ -6155,8 +5992,6 @@ snapshots:
       merge2: 1.4.1
       micromatch: 4.0.8
 
-  fast-json-stable-stringify@2.1.0: {}
-
   fastq@1.19.1:
     dependencies:
       reusify: 1.1.0
@@ -6323,24 +6158,10 @@ snapshots:
 
   http-parser-js@0.5.9: {}
 
-  http-proxy-agent@7.0.2:
-    dependencies:
-      agent-base: 7.1.3
-      debug: 4.4.0
-    transitivePeerDependencies:
-      - supports-color
-
   http2-wrapper@2.2.1:
     dependencies:
       quick-lru: 5.1.1
       resolve-alpn: 1.2.1
-
-  https-proxy-agent@7.0.6:
-    dependencies:
-      agent-base: 7.1.3
-      debug: 4.4.0
-    transitivePeerDependencies:
-      - supports-color
 
   human-signals@2.1.0: {}
 
@@ -6438,8 +6259,6 @@ snapshots:
   js-yaml@4.1.0:
     dependencies:
       argparse: 2.0.1
-
-  jsbi@4.3.0: {}
 
   jsesc@3.1.0: {}
 
@@ -6607,8 +6426,6 @@ snapshots:
   lodash.camelcase@4.3.0: {}
 
   lodash.sortby@4.7.0: {}
-
-  long@4.0.0: {}
 
   long@5.3.1: {}
 
@@ -6927,8 +6744,6 @@ snapshots:
 
   prettier@3.2.4: {}
 
-  priorityqueuejs@2.0.0: {}
-
   process@0.11.10: {}
 
   proto-list@1.2.4: {}
@@ -6971,6 +6786,10 @@ snapshots:
       scheduler: 0.23.2
 
   react-error-overlay@6.0.9: {}
+
+  react-icons@5.5.0(react@18.2.0):
+    dependencies:
+      react: 18.2.0
 
   react-refresh@0.14.0: {}
 
@@ -7044,8 +6863,6 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
-
-  semaphore@1.1.0: {}
 
   semver@5.7.2: {}
 
@@ -7279,8 +7096,6 @@ snapshots:
       picocolors: 1.1.1
 
   utility-types@3.11.0: {}
-
-  uuid@11.1.0: {}
 
   vue@3.3.4:
     dependencies:
