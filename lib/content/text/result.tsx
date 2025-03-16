@@ -10,6 +10,10 @@ export default function ResultPopup(props) {
 	let data = (typeof wordDict[props.selectedText] == "undefined") ? props.data_2 : wordDict[props.selectedText];
 	let choice = (typeof wordDict[props.selectedText] == "undefined") ? "data_2" : "data_1";
 
+	console.log(data);
+	console.log(choice);
+	// console.log(data.noun);
+	
 	return (
 		<div
 			id="result"

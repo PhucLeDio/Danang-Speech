@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import BTN from "../components/images/BTNSounds.png";
+import BTN from "../components/images/Sound.png";
 
 import "../components/style/Volume.css";
 
@@ -9,6 +9,8 @@ const Volume = (props) => {
 	// get text
 	const { name } = props;
 	const audioRef = useRef(null);
+
+	const [selected, setSelected] = useState("VIE");
 
 	const requestViettelAI = async (voice) => {
 		let voiceCode = "";
@@ -77,14 +79,15 @@ const Volume = (props) => {
 			style={{
 				display: "flex",
 				alignItems: "center",
-				justifyContent: "space-around"
+				justifyContent: "space-around",
+				gap: "10px",
 			}}>
 			{/* Nút âm thanh */}
-			<div>
+			<div style={{width: "60px"}}>
 				<img
 					src={BTN}
-					width={50}
-					height={50}
+					width={40}
+					height={40}
 					alt="Button Sounds"
 					onClick={() => requestViettelAI("Northern Woman")}
 					style={{ cursor: "pointer" }}
@@ -92,7 +95,7 @@ const Volume = (props) => {
 			</div>
 
 			{/* Thanh trượt để điều chỉnh tốc độ */}
-			<input
+			{/* <input
 				type="range"
 				min={0.8}
 				max={1.2}
@@ -107,7 +110,49 @@ const Volume = (props) => {
 					width: "180px",
 					height: "20px"
 				}}
-			/>
+			/> */}
+
+			{/* Chuyển đổi giữa tiếng Việt và tiếng Anh */}
+			<div
+				style={{
+					display: "flex",
+					borderRadius: "15px",
+					backgroundColor: "#FFF6C8",
+					border: "2px solid #0070D9",
+					overflow: "hidden",
+					width: "160px",
+					cursor: "pointer",
+				}}
+			>
+				<div
+					onClick={() => setSelected("VIE")}
+					style={{
+						flex: 1,
+						textAlign: "center",
+						padding: "10px",
+						backgroundColor: selected === "VIE" ? "#0070D9" : "#FFF6C8",
+						color: selected === "VIE" ? "white" : "#0070D9",
+						fontWeight: "bold",
+						transition: "all 0.3s ease",
+					}}
+				>
+					VIE
+				</div>
+				<div
+					onClick={() => setSelected("ENG")}
+					style={{
+						flex: 1,
+						textAlign: "center",
+						padding: "10px",
+						backgroundColor: selected === "ENG" ? "#0070D9" : "#FFF6C8",
+						color: selected === "ENG" ? "white" : "#0070D9",
+						fontWeight: "bold",
+						transition: "all 0.3s ease",
+					}}
+				>
+					ENG
+				</div>
+			</div>
 
 			<audio ref={audioRef} style={{ display: "none" }}></audio>
 		</div>
