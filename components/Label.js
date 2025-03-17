@@ -24,16 +24,17 @@ const Label = ({
 			className="scrollable"
 			style={{
 				width: width || "100%",
-				border: border || "2px solid #59A5FF",
+				border: border || "1px solid #FFF6C8",
 				height: height || "auto",
 				maxHeight: maxHeight || height || "auto", // Giới hạn chiều cao để kích hoạt cuộn
-				backgroundColor: backgroundColor || "#0083E1",
+				backgroundColor: backgroundColor || "#FFF6C8",
 				borderRadius: "10px",
 				textAlign: textAlign,
 				alignContent: alignContent,
-				boxShadow:
-					boxShadow ||
-					"0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5)",
+				// boxShadow:
+				// 	boxShadow ||
+				// 	"0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5)",
+				boxShadow: boxShadow || "0px 4px 10px rgba(0, 0, 0, 0.2)",
 				paddingLeft: paddingLeft,
 				color: color,
 				fontWeight: fontWeight || "bold",
