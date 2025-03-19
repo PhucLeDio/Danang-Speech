@@ -7,7 +7,7 @@ import "../components/style/Volume.css";
 const Volume = (props) => {
 	const [speed, setSpeed] = useState(1.0);
 	// get text
-	const { name } = props;
+	const { name, isLabel } = props;
 	const audioRef = useRef(null);
 
 	const [selected, setSelected] = useState("VIE");
@@ -75,87 +75,106 @@ const Volume = (props) => {
 	};
 
 	return (
-		<div
-			style={{
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "space-around",
-				gap: "10px",
-			}}>
-			{/* Nút âm thanh */}
-			<div style={{width: "60px"}}>
+		isLabel ? (
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-around",
+					gap: "10px",
+				}}
+			>
+				{/* Nút âm thanh */}
+				<div style={{ width: "60px" }}>
+					<img
+						src={BTN}
+						width={40}
+						height={40}
+						alt="Button Sounds"
+						onClick={() => requestViettelAI("Northern Woman")}
+						style={{ cursor: "pointer" }}
+					/>
+				</div>
+
+				{/* Thanh trượt để điều chỉnh tốc độ */}
+				{/* <input
+			  type="range"
+			  min={0.8}
+			  max={1.2}
+			  step={0.1}
+			  value={speed}
+			  onChange={(e) => {
+				setSpeed(Number(e.target.value));
+				console.log("Speed: ", e.target.value);
+			  }}
+			  className="custom-range"
+			  style={{
+				width: "180px",
+				height: "20px",
+			  }}
+			/> */}
+
+				{/* Chuyển đổi giữa tiếng Việt và tiếng Anh */}
+				<div
+					style={{
+						display: "flex",
+						borderRadius: "15px",
+						backgroundColor: "#FFF6C8",
+						border: "2px solid #0070D9",
+						overflow: "hidden",
+						width: "160px",
+						cursor: "pointer",
+					}}
+				>
+					<div
+						onClick={() => setSelected("VIE")}
+						style={{
+							flex: 1,
+							textAlign: "center",
+							padding: "10px",
+							backgroundColor: selected === "VIE" ? "#0070D9" : "#FFF6C8",
+							color: selected === "VIE" ? "white" : "#0070D9",
+							fontWeight: "bold",
+							transition: "all 0.3s ease",
+						}}
+					>
+						VIE
+					</div>
+					<div
+						onClick={() => setSelected("ENG")}
+						style={{
+							flex: 1,
+							textAlign: "center",
+							padding: "10px",
+							backgroundColor: selected === "ENG" ? "#0070D9" : "#FFF6C8",
+							color: selected === "ENG" ? "white" : "#0070D9",
+							fontWeight: "bold",
+							transition: "all 0.3s ease",
+						}}
+					>
+						ENG
+					</div>
+				</div>
+
+				<audio ref={audioRef} style={{ display: "none" }}></audio>
+			</div>
+		) : (
+			// Nút âm thanh
+			<div style={{ 
+				width: "60px", 
+				paddingTop: "5px",
+				paddingBottom: "5px",
+				marginLeft: "6px", }}>
 				<img
 					src={BTN}
-					width={40}
-					height={40}
+					width={43}
+					height={43}
 					alt="Button Sounds"
 					onClick={() => requestViettelAI("Northern Woman")}
 					style={{ cursor: "pointer" }}
 				/>
 			</div>
-
-			{/* Thanh trượt để điều chỉnh tốc độ */}
-			{/* <input
-				type="range"
-				min={0.8}
-				max={1.2}
-				step={0.1}
-				value={speed}
-				onChange={(e) => {
-					setSpeed(Number(e.target.value));
-					console.log("Speed: ", e.target.value);
-				}}
-				className="custom-range"
-				style={{
-					width: "180px",
-					height: "20px"
-				}}
-			/> */}
-
-			{/* Chuyển đổi giữa tiếng Việt và tiếng Anh */}
-			<div
-				style={{
-					display: "flex",
-					borderRadius: "15px",
-					backgroundColor: "#FFF6C8",
-					border: "2px solid #0070D9",
-					overflow: "hidden",
-					width: "160px",
-					cursor: "pointer",
-				}}
-			>
-				<div
-					onClick={() => setSelected("VIE")}
-					style={{
-						flex: 1,
-						textAlign: "center",
-						padding: "10px",
-						backgroundColor: selected === "VIE" ? "#0070D9" : "#FFF6C8",
-						color: selected === "VIE" ? "white" : "#0070D9",
-						fontWeight: "bold",
-						transition: "all 0.3s ease",
-					}}
-				>
-					VIE
-				</div>
-				<div
-					onClick={() => setSelected("ENG")}
-					style={{
-						flex: 1,
-						textAlign: "center",
-						padding: "10px",
-						backgroundColor: selected === "ENG" ? "#0070D9" : "#FFF6C8",
-						color: selected === "ENG" ? "white" : "#0070D9",
-						fontWeight: "bold",
-						transition: "all 0.3s ease",
-					}}
-				>
-					ENG
-				</div>
-			</div>
-
-			<audio ref={audioRef} style={{ display: "none" }}></audio>
-		</div>
+		)
 	);
 };
 
