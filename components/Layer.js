@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import StageHeader from "../components/StageHeader/StageHeader";
 import Stage1 from "../components/Stage1/Stage1";
-import Mispronounce from "../components/Mispronounce/Mispronounce";
+import Mispronounce from "./Stage2/Mispronounce";
 import BtnLuuTu from "./images/BtnLuuTu.png";
 import BtnPhatAm from "./images/BtnPhatAm.png";
 import BtnTuyChon from "./images/BtnTuyChon.png";
@@ -109,7 +109,7 @@ const Layer = (props) => {
 			<StageHeader name={name} />
 
 			{/* Toggle Between Stage1 and Mispronounce */}
-			{showMispronounce ? <Mispronounce /> : (
+			{showMispronounce ? <Mispronounce name={name} /> : (
 				<Stage1
 					activeLabel={activeLabel}
 					labels={labels}

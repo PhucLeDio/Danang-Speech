@@ -14,7 +14,7 @@ const StageHeader = ({ name }) => {
                 alignContent={"center"}
                 color={"#0070D9"}
             />
-            <Volume name={name} />
+            <Volume name={name} isLabel={true} />
         </div>
     );
 }
