@@ -2,7 +2,20 @@ import React from "react";
 import Label from "../Label";
 import Example from "../Example";
 
+/*
+*
+desc
+desc_en
+example
+example_en
+img
+index_img_selected
+synonym
+* antonym
+* */
+
 const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
+	// return;
 	return (
 		<div
 			style={{
@@ -15,7 +28,7 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 			<div className="right column" style={{ width: "270px" }}>
 				<div>
 					<Label
-						text={getText().defination}
+						text={getText().desc}
 						height={"130px"}
 						width={"92%"}
 						fontPadding={"10px"}
@@ -61,11 +74,11 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 					}}>
 					<Example
 						textType={"ĐỒNG NGHĨA"}
-						TuNgu={getText().synonyms.join(", ")}
+						TuNgu={getText().synonym}
 					/>
 					<Example
 						textType={"TRÁI NGHĨA"}
-						TuNgu={getText().antonyms.join(", ")}
+						TuNgu={getText().antonym}
 					/>
 				</div>
 			</div>
@@ -87,7 +100,7 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 								fontPadding={"10px"}
 								text={`<div style="display: inline-block; padding: 3px 15px; background-color: #0070D9; color: #FFF6C8; border-radius: 30px;">
 									Ví dụ
-								</div> ` + getText().example[0]}
+								</div> ` + getText().example}
 								paddingLeft={"10px"}
 								fontSize={"17.5px"}
 								color={"#242C32"}
@@ -101,7 +114,7 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 							}}>
 							{getText().img ? (
 								<img
-									src={getText().img}
+									src={`https://vmdstorageimages.blob.core.windows.net/vmdimages/${getText().img}_1.jpg`}
 									style={{
 										height: "93%",
 										width: "100%",

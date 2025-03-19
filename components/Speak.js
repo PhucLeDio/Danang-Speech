@@ -90,7 +90,7 @@ const Speak = (props) => {
 
 			try {
 				const response = await fetch(
-					"http://127.0.0.1:8000/vmd/infer",
+					"http://74.249.194.187:8000/vmd/infer",
 					{
 						method: "POST",
 						headers: {
@@ -149,7 +149,6 @@ const Speak = (props) => {
 					onClick={recording ? stopRecording : startRecording}
 					style={{
 						cursor: "pointer",
-						backgroundColor: "transparent",
 						border: "none",
 						backgroundColor: isRecordingEffect
 							? "#FF4136"

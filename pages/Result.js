@@ -4,13 +4,13 @@ import Layer from "../components/Layer";
 import MainFrame from "../components/Frame/MainFrame"
 
 const ResultPage = (props) => {
-	const { choice, name, data } = props;
+	const { data } = props;
 
 	return (
 		<div style={{ height: "500px", width: "600px" }}>
 			<MainFrame />
 
-			<Layer choice={choice} name={name} data={data} />
+			<Layer data={data} />
 
 		</div>
 	);
