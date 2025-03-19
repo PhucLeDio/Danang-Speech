@@ -1,10 +1,13 @@
-import wordDict_2 from "assets/output_8k.json";
-import wordDict from "assets/word.json";
-import React from "react";
+import React, {useState} from "react";
 import ReactDom from "react-dom";
 import Icon from "react:assets/iconn.svg";
+import {findWord} from "../../../api/api";
 
 import ResultPopup from "./result";
+
+const findWordFunc = async (selectedText: string) => {
+	return await findWord(selectedText);
+};
 
 export default function IconPopup(props) {
 	return (
@@ -22,40 +25,21 @@ export default function IconPopup(props) {
 	);
 }
 
-function searchWord(wordDict, selectedText) {
-	return (typeof wordDict[selectedText] != "undefined") ? true : false;
-}
+const showResultPopup = async (mousePos, selectedText) => {
+	let result = await findWordFunc(selectedText);
+	console.log(selectedText);
+	console.log(result);
 
-function searchWordDict2(wordDict2, selectedText) {
-	return wordDict2.find((item) => item.word === selectedText);
-}
-
-function showResultPopup(mousePos, selectedText) {
-	let data_2 = searchWordDict2(wordDict_2, selectedText);
 	if (
-		!searchWord(wordDict, selectedText) &&
-		typeof data_2 == "undefined"
+		!result
 	) {
 		console.log("Dictionary do not have that word");
 		const icon = document.querySelector("svg#icon");
 		icon.remove();
-	} else if (searchWord(wordDict, selectedText)) {
+	} else {
 		const container = document.createElement("div");
 		ReactDom.render(
-			<ResultPopup selectedText={selectedText} mousePos={mousePos} />,
-			container
-		);
-		document.body.appendChild(container);
-		const icon = document.querySelector("svg#icon");
-		icon.remove();
-	} else if (!(typeof data_2 == "undefined")) {
-		const container = document.createElement("div");
-		ReactDom.render(
-			<ResultPopup
-				data_2={data_2}
-				selectedText={selectedText}
-				mousePos={mousePos}
-			/>,
+			<ResultPopup selectedText={selectedText} mousePos={mousePos} data={result} />,
 			container
 		);
 		document.body.appendChild(container);

@@ -144,7 +144,7 @@ const Speak = (props) => {
 		// 			display: "flex",
 		// 			alignItems: "center"
 		// 		}}>
-			
+
 		// 		<button
 		// 			onClick={recording ? stopRecording : startRecording}
 		// 			style={{
@@ -188,30 +188,30 @@ const Speak = (props) => {
 		// 	</div>
 		// </div>
 		<button
-					onClick={recording ? stopRecording : startRecording}
-					style={{
-						cursor: "pointer",
-						backgroundColor: "transparent",
-						border: "none",
-						backgroundColor: "#0070D9",
-						animation: isRecordingEffect
-							? "blink 1s infinite"
-							: "none",
-						paddingTop: "5px",
-						paddingBottom: "5px",
-						marginRight: "5px",
-						borderRadius: "50%",
-						display: "flex"
-					}}>
-					<img
-						src={BTN}
-						style={{ color: "#AAAAAA" }}
-						width={32}
-						height={32}
-						borderRadius="50%"
-						alt="Button speak"
-					/>
-				</button>
+			onClick={recording ? stopRecording : startRecording}
+			style={{
+				cursor: "pointer",
+				backgroundColor: "transparent",
+				border: "none",
+				backgroundColor: "#0070D9",
+				animation: isRecordingEffect
+					? "blink 1s infinite"
+					: "none",
+				paddingTop: "5px",
+				paddingBottom: "5px",
+				marginRight: "5px",
+				borderRadius: "50%",
+				display: "flex"
+			}}>
+			<img
+				src={BTN}
+				style={{ color: "#AAAAAA" }}
+				width={32}
+				height={32}
+				borderRadius="50%"
+				alt="Button speak"
+			/>
+		</button>
 	);
 };
 

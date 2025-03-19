@@ -1,4 +1,4 @@
-import { useFirebase } from "~firebase/hook";
+import { useFirebase } from "~firebase/useFirebase";
 import Header from "../components/Header";
 
 export default function WelcomePopup({ user, onClose }) {

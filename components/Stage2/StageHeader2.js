@@ -26,7 +26,6 @@ const StageHeader2 = ({ title, name }) => {
                 width: "60%",
                 height: "100%",
                 justifyContent: "center",
-                justifyContent: "center",
                 alignItems: "center",
                 alignContent: "center",
                 display: "flex",
@@ -37,7 +36,6 @@ const StageHeader2 = ({ title, name }) => {
             <div style={{
                 width: "20%",
                 height: "100%",
-                justifyContent: "center",
                 justifyContent: "center",
                 alignItems: "center",
                 alignContent: "center",

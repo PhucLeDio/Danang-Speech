@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFirebase } from "~firebase/hook";
+import { useFirebase } from "~firebase/useFirebase";
 import { FcGoogle } from "react-icons/fc"; // Import Google icon
 import WelcomePopup from "../components/WelcomePopup";
 import Header from "../components/Header";

@@ -7,13 +7,6 @@ import ResultPage from "~pages/Result";
 
 export default function ResultPopup(props) {
 
-	let data = (typeof wordDict[props.selectedText] == "undefined") ? props.data_2 : wordDict[props.selectedText];
-	let choice = (typeof wordDict[props.selectedText] == "undefined") ? "data_2" : "data_1";
-
-	console.log(data);
-	console.log(choice);
-	// console.log(data.noun);
-	
 	return (
 		<div
 			id="result"
@@ -26,9 +19,7 @@ export default function ResultPopup(props) {
 				zIndex: "9999999999"
 			}}>
 			<ResultPage
-				choice={choice}
-				name={props.selectedText}
-				data={data}
+				data={props.data}
 			/>
 		</div>
 	);

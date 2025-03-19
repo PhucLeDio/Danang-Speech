@@ -160,8 +160,8 @@ const Volume = (props) => {
 			</div>
 		) : (
 			// Nút âm thanh
-			<div style={{ 
-				width: "60px", 
+			<div style={{
+				width: "60px",
 				paddingTop: "5px",
 				paddingBottom: "5px",
 				marginLeft: "6px", }}>
