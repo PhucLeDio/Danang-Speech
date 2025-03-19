@@ -90,7 +90,7 @@ const Speak = (props) => {
 
 			try {
 				const response = await fetch(
-					"http://74.249.194.187:8000/vmd/infer",
+					"http://127.0.0.1:8000/vmd/infer",
 					{
 						method: "POST",
 						headers: {
@@ -133,59 +133,85 @@ const Speak = (props) => {
 	};
 
 	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center"
-			}}>
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center"
-				}}>
-			
-				<button
-					onClick={recording ? stopRecording : startRecording}
-					style={{
-						cursor: "pointer",
-						border: "none",
-						backgroundColor: isRecordingEffect
-							? "#FF4136"
-							: "#ffcd78",
-						animation: isRecordingEffect
-							? "blink 1s infinite"
-							: "none",
-						paddingTop: "5px",
-						paddingBottom: "5px",
-						marginRight: "5px",
-						borderRadius: "50%",
-						display: "flex"
-					}}>
-					<img
-						src={BTN}
-						style={{ color: "#AAAAAA" }}
-						width={32}
-						height={32}
-						borderRadius="50%"
-						alt="Button speak"
-					/>
-				</button>
+		// <div
+		// 	style={{
+		// 		display: "flex",
+		// 		flexDirection: "column",
+		// 		alignItems: "center"
+		// 	}}>
+		// 	<div
+		// 		style={{
+		// 			display: "flex",
+		// 			alignItems: "center"
+		// 		}}>
 
-				<Label
-					text={checkSpeaking}
-					alignContent={"center"}
-					height={"36px"}
-					width={"190px"}
-					textAlign={"center"}
-					border={"none"}
-					backgroundColor={"#FFDB5A"}
-					color={"#A83D00"}
-					boxShadow={"none"}
-					fontSize={"20px"}
-				/>
-			</div>
-		</div>
+		// 		<button
+		// 			onClick={recording ? stopRecording : startRecording}
+		// 			style={{
+		// 				cursor: "pointer",
+		// 				backgroundColor: "transparent",
+		// 				border: "none",
+		// 				backgroundColor: isRecordingEffect
+		// 					? "#FF4136"
+		// 					: "#ffcd78",
+		// 				animation: isRecordingEffect
+		// 					? "blink 1s infinite"
+		// 					: "none",
+		// 				paddingTop: "5px",
+		// 				paddingBottom: "5px",
+		// 				marginRight: "5px",
+		// 				borderRadius: "50%",
+		// 				display: "flex"
+		// 			}}>
+		// 			<img
+		// 				src={BTN}
+		// 				style={{ color: "#AAAAAA" }}
+		// 				width={32}
+		// 				height={32}
+		// 				borderRadius="50%"
+		// 				alt="Button speak"
+		// 			/>
+		// 		</button>
+
+		// 		<Label
+		// 			text={checkSpeaking}
+		// 			alignContent={"center"}
+		// 			height={"36px"}
+		// 			width={"190px"}
+		// 			textAlign={"center"}
+		// 			border={"none"}
+		// 			backgroundColor={"#FFDB5A"}
+		// 			color={"#A83D00"}
+		// 			boxShadow={"none"}
+		// 			fontSize={"20px"}
+		// 		/>
+		// 	</div>
+		// </div>
+		<button
+			onClick={recording ? stopRecording : startRecording}
+			style={{
+				cursor: "pointer",
+				backgroundColor: "transparent",
+				border: "none",
+				backgroundColor: "#0070D9",
+				animation: isRecordingEffect
+					? "blink 1s infinite"
+					: "none",
+				paddingTop: "5px",
+				paddingBottom: "5px",
+				marginRight: "5px",
+				borderRadius: "50%",
+				display: "flex"
+			}}>
+			<img
+				src={BTN}
+				style={{ color: "#AAAAAA" }}
+				width={32}
+				height={32}
+				borderRadius="50%"
+				alt="Button speak"
+			/>
+		</button>
 	);
 };
 
