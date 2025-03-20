@@ -2,7 +2,7 @@ import React from "react";
 import Speak from "../Speak";
 import Volume from "../Volume";
 
-const StageHeader2 = ({ title, name }) => {
+const StageHeader2 = ({ isList, title, name }) => {
     return (
         <div style={{
             background: "#0070D9",
@@ -41,7 +41,7 @@ const StageHeader2 = ({ title, name }) => {
                 alignContent: "center",
                 display: "flex",
             }}>
-                <Volume name={name} isLabel={false} />
+                <Volume isList={isList} name={name} isLabel={false} />
             </div>
         </div>
     );
