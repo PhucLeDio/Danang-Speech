@@ -27,7 +27,7 @@ const Mispronounce = ({ name }) => {
 					boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
 					borderRadius: "20px",
 				}}>
-					<StageHeader2 title={"Phát âm chính xác từ"} name={"con bò"} />
+					<StageHeader2 isList={false} title={"Phát âm chính xác từ"} name={name} />
 					<div style={{
 						background: "#FFF6C8",
 						height: "90px",
@@ -50,7 +50,7 @@ const Mispronounce = ({ name }) => {
 							justifyContent: "center",
 							alignItems: "center",
 							alignContent: "center",
-						}}>Con bò</div>
+						}}>{name}</div>
 						<div style={{
 							height: "70%",
 							width: "100%",
@@ -61,7 +61,7 @@ const Mispronounce = ({ name }) => {
 							justifyContent: "center",
 							alignItems: "center",
 							alignContent: "center",
-						}}>Con bò</div>
+						}}>{name}</div>
 					</div>
 				</div>
 
@@ -76,7 +76,7 @@ const Mispronounce = ({ name }) => {
 					boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
 					borderRadius: "20px",
 				}}>
-					<StageHeader2 title={"Phát âm chính xác câu"} name={"Nhập câu vô đây (i guess so)"} />
+					<StageHeader2 isList={false} title={"Phát âm chính xác câu"} name={"Nhập câu vô đây (i guess so)"} />
 					<div style={{
 						background: "#FFF6C8",
 						height: "90px",
@@ -100,7 +100,7 @@ const Mispronounce = ({ name }) => {
 							justifyContent: "center",
 							alignItems: "center",
 							alignContent: "center",
-						}}>Con bò đang đi trên thảm cỏ</div>
+						}}>{name} đang đi trên thảm cỏ</div>
 						<div style={{
 							height: "100%",
 							width: "80%",
@@ -112,7 +112,7 @@ const Mispronounce = ({ name }) => {
 							justifyContent: "center",
 							alignItems: "center",
 							alignContent: "center",
-						}}>Con bò đang đi trên thảm cỏ</div>
+						}}>{name} đang đi trên thảm cỏ</div>
 					</div>
 				</div>
 		</div>

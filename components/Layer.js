@@ -5,13 +5,17 @@ import Mispronounce from "../components/Stage2/Mispronounce";
 import BtnLuuTu from "./images/BtnLuuTu.png";
 import BtnPhatAm from "./images/BtnPhatAm.png";
 import BtnTuyChon from "./images/BtnTuyChon.png";
+import BTNtudien from "./images/BTNtudien.png";
+import BTNmieng from "./images/BTNmieng.png"
 import { useFirebase } from "../firebase/useFirebase";
-import {findWord, saveDictionary} from "../api/api";
+import { findWord, saveDictionary } from "../api/api";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Layer = (props) => {
 	const { data } = props;
 	const [activeLabel, setActiveLabel] = useState("ĐỘNG TỪ");
 	const [showMispronounce, setShowMispronounce] = useState(false);
+	const [showSave, setShowSave] = useState(false);
 	const { user, isLoading, onLoginWithGoogle, onLogout } = useFirebase();
 
 	const labels = [
@@ -34,14 +38,15 @@ const Layer = (props) => {
 		setShowMispronounce(!showMispronounce);
 	};
 
+	const toggleSave = () => {
+		setShowSave(!showSave);
+	};
+
 	const saveDics = async () => {
 		if (!user) {
 			console.log("User is null, prompting login...");
 			try {
 				// do something => you need login and hidden extension
-
-
-
 			} catch (e) {
 				console.error("Login error:", e);
 			}
@@ -56,11 +61,22 @@ const Layer = (props) => {
 
 			// call api from file: api.ts
 
+
 			console.log(data);
 			await saveDictionary(user.uid, data._id);
 
 
 		}
+	};
+
+	const handleBTNtudienClick = () => {
+		setShowSave(false); // Hide the save section
+		setShowMispronounce(false); // Ensure Mispronounce section is hidden
+	};
+
+	const handleBtnPhatAmClick = () => {
+		setShowSave(false); // Hide the save section
+		setShowMispronounce((prevState) => !prevState); // Toggle Mispronounce
 	};
 
 	return (
@@ -74,10 +90,9 @@ const Layer = (props) => {
 				padding: "15px",
 			}}
 		>
-
 			<div>
 				<button
-					onClick={() => alert("Danh sach luu words Button Clicked")}
+					onClick={toggleSave}
 					style={{
 						position: "absolute",
 						top: "-18px",
@@ -92,7 +107,7 @@ const Layer = (props) => {
 				</button>
 
 				<button
-					onClick={toggleMispronounce}
+					onClick={handleBtnPhatAmClick}
 					style={{
 						position: "absolute",
 						top: "-18px",
@@ -125,16 +140,116 @@ const Layer = (props) => {
 				</button>
 			</div>
 
-			<StageHeader name={data.word} />
-			{showMispronounce ? (
-				<Mispronounce name={data.word} />
+			{showSave ? (
+				<>
+					<StageHeader isList={true} name={data.word} />
+					<div style={{
+						width: "550px",
+						height: "360px",
+						border: "1px solid #0070D9",
+						borderRadius: "20px",
+						display: "flex",
+						flexDirection: "column",
+					}}>
+						<div style={{
+							width: "100%",
+							height: "10%",
+							backgroundColor: "#0070D9",
+							borderTopLeftRadius: "20px",
+							borderTopRightRadius: "20px",
+						}}></div>
+
+						<div style={{
+							height: "288px",
+							width: "100%",
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							gap: "10px",
+							overflowY: "auto",
+							overflowX: "hidden"
+						}}>
+
+
+							{/* Loops data parse vô đây hehe */}
+							<div style={{
+								width: "90%",
+								height: "50px",
+								minHeight: "50px",
+								display: "flex",
+								flexDirection: "row",
+								borderBottom: "1px solid #ADAAAB",
+								marginTop: "5px",
+							}}>
+								<div style={{
+									height: "50px",
+									width: "10%",
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center"
+								}}>
+									<FaTrashAlt size={24} color="#0070D9" />
+								</div>
+
+								<div style={{
+									height: "50px",
+									width: "70%",
+									fontWeight: "bold",
+									fontSize: "25px",
+									display: "flex",
+									alignItems: "center"
+								}}>{data.word}</div>
+
+								<div style={{
+									height: "50px",
+									width: "20%",
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+								}}>
+									<button style={{
+										background: "transparent",
+										border: "none",
+										cursor: "pointer"
+									}} onClick={handleBTNtudienClick}>
+										<img src={BTNtudien} alt="Dictionary" style={{ width: "40px", height: "40px" }} />
+									</button>
+									<button style={{
+										background: "transparent",
+										border: "none",
+										cursor: "pointer"
+									}} onClick={handleBtnPhatAmClick}>
+										<img src={BTNmieng} alt="Pronunciation" style={{ width: "40px", height: "40px" }} />
+									</button>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div style={{
+							width: "100%",
+							height: "10%",
+							backgroundColor: "#0070D9",
+							borderBottomLeftRadius: "20px",
+							borderBottomRightRadius: "20px",
+						}}></div>
+					</div>
+				</>
 			) : (
-				<Stage1
-					activeLabel={activeLabel}
-					labels={labels}
-					handleClick={handleClick}
-					getText={getText}
-				/>
+				<>
+					<StageHeader isList={false} name={data.word} />
+					{showMispronounce ? (
+						<Mispronounce name={data.word} />
+					) : (
+						<Stage1
+							activeLabel={activeLabel}
+							labels={labels}
+							handleClick={handleClick}
+							getText={getText}
+						/>
+					)}
+				</>
 			)}
 		</div>
 	);
