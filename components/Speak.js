@@ -1,20 +1,16 @@
 import React, { useRef, useState } from "react";
-
+import { CHECK_PRONOUNCE} from "~config/config";
 import BTN from "../components/images/mic-speak.png";
-
 import "../components/style/Volume.css";
 
 import Label from "./Label";
 
-const Speak = (props) => {
+const Speak = ({name}) => {
 	const [recording, setRecording] = useState(false);
 	const [isRecordingEffect, setIsRecordingEffect] = useState(false); // Hiệu ứng ghi âm
 	const mediaRecorderRef = useRef(null);
 	const audioChunksRef = useRef([]);
-	const [checkSpeaking, setCheckSpeaking] = useState("Kiểm tra pháta âm");
-
-	// get text
-	const { name } = props;
+	const [checkSpeaking, setCheckSpeaking] = useState("Kiểm tra phát âm");
 
 	const startRecording = async () => {
 		try {
@@ -90,7 +86,7 @@ const Speak = (props) => {
 
 			try {
 				const response = await fetch(
-					"http://127.0.0.1:8000/vmd/infer",
+					CHECK_PRONOUNCE,
 					{
 						method: "POST",
 						headers: {
@@ -109,9 +105,9 @@ const Speak = (props) => {
 					console.log(result.response);
 					result.response.map(([char, status]) => {
 						if (status === 1) {
-							tmp += `<span style="color: red;">${char}</span>`;
+							tmp += `<span style="color: #fa4a4a;">${char}</span>`;
 						} else {
-							tmp += `<span style="color: blue;">${char}</span>`;
+							tmp += `<span style="color: #aff63d;">${char}</span>`;
 						}
 						count++;
 						if (count === 2) {
@@ -120,6 +116,7 @@ const Speak = (props) => {
 					});
 
 					setCheckSpeaking(tmp.trim());
+					// checkSpeaking
 				} else {
 					alert("Error from server!");
 				}
@@ -133,65 +130,10 @@ const Speak = (props) => {
 	};
 
 	return (
-		// <div
-		// 	style={{
-		// 		display: "flex",
-		// 		flexDirection: "column",
-		// 		alignItems: "center"
-		// 	}}>
-		// 	<div
-		// 		style={{
-		// 			display: "flex",
-		// 			alignItems: "center"
-		// 		}}>
-
-		// 		<button
-		// 			onClick={recording ? stopRecording : startRecording}
-		// 			style={{
-		// 				cursor: "pointer",
-		// 				backgroundColor: "transparent",
-		// 				border: "none",
-		// 				backgroundColor: isRecordingEffect
-		// 					? "#FF4136"
-		// 					: "#ffcd78",
-		// 				animation: isRecordingEffect
-		// 					? "blink 1s infinite"
-		// 					: "none",
-		// 				paddingTop: "5px",
-		// 				paddingBottom: "5px",
-		// 				marginRight: "5px",
-		// 				borderRadius: "50%",
-		// 				display: "flex"
-		// 			}}>
-		// 			<img
-		// 				src={BTN}
-		// 				style={{ color: "#AAAAAA" }}
-		// 				width={32}
-		// 				height={32}
-		// 				borderRadius="50%"
-		// 				alt="Button speak"
-		// 			/>
-		// 		</button>
-
-		// 		<Label
-		// 			text={checkSpeaking}
-		// 			alignContent={"center"}
-		// 			height={"36px"}
-		// 			width={"190px"}
-		// 			textAlign={"center"}
-		// 			border={"none"}
-		// 			backgroundColor={"#FFDB5A"}
-		// 			color={"#A83D00"}
-		// 			boxShadow={"none"}
-		// 			fontSize={"20px"}
-		// 		/>
-		// 	</div>
-		// </div>
 		<button
 			onClick={recording ? stopRecording : startRecording}
 			style={{
 				cursor: "pointer",
-				backgroundColor: "transparent",
 				border: "none",
 				backgroundColor: "#0070D9",
 				animation: isRecordingEffect

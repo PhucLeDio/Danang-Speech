@@ -26,7 +26,6 @@ const Layer = (props) => {
 		else if (activeLabel === "TÍNH TỪ") return data?.adj || {};
 	};
 
-
 	const handleClick = (label) => {
 		setActiveLabel(label);
 	};
@@ -57,7 +56,8 @@ const Layer = (props) => {
 
 			// call api from file: api.ts
 
-			await saveDictionary(user.uid, data.word);
+			console.log(data);
+			await saveDictionary(user.uid, data._id);
 
 
 		}
