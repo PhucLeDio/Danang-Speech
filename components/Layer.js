@@ -8,7 +8,7 @@ import BtnTuyChon from "./images/BtnTuyChon.png";
 import BTNtudien from "./images/BTNtudien.png";
 import BTNmieng from "./images/BTNmieng.png"
 import { useFirebase } from "../firebase/useFirebase";
-import { findWord, saveDictionary } from "../api/api";
+import {findDictionarysByIdUser, findWord, saveDictionary} from "../api/api";
 import { FaTrashAlt } from "react-icons/fa";
 
 const Layer = (props) => {
@@ -16,6 +16,7 @@ const Layer = (props) => {
 	const [activeLabel, setActiveLabel] = useState("ĐỘNG TỪ");
 	const [showMispronounce, setShowMispronounce] = useState(false);
 	const [showSave, setShowSave] = useState(false);
+	const [dataDictionarys, setDataDictionarys] = useState();
 	const { user, isLoading, onLoginWithGoogle, onLogout } = useFirebase();
 
 	const labels = [
@@ -38,7 +39,8 @@ const Layer = (props) => {
 		setShowMispronounce(!showMispronounce);
 	};
 
-	const toggleSave = () => {
+	const toggleSave = async () => {
+		setDataDictionarys(await findDictionarysByIdUser(user.uid))
 		setShowSave(!showSave);
 	};
 
@@ -63,8 +65,7 @@ const Layer = (props) => {
 
 
 			console.log(data);
-			await saveDictionary(user.uid, data._id);
-
+			await saveDictionary(user.uid, data._id, data.word);
 
 		}
 	};
@@ -140,6 +141,7 @@ const Layer = (props) => {
 				</button>
 			</div>
 
+			{/*================== show lists have been saved ====================*/}
 			{showSave ? (
 				<>
 					<StageHeader isList={true} name={data.word} />
@@ -170,59 +172,62 @@ const Layer = (props) => {
 							overflowX: "hidden"
 						}}>
 
+							{/* Loops data parse  */
 
-							{/* Loops data parse vô đây hehe */}
-							<div style={{
-								width: "90%",
-								height: "50px",
-								minHeight: "50px",
-								display: "flex",
-								flexDirection: "row",
-								borderBottom: "1px solid #ADAAAB",
-								marginTop: "5px",
-							}}>
-								<div style={{
+							dataDictionarys.dics.map((item, index) => (
+								<div key={item.id_dics || index} style={{
+									width: "90%",
 									height: "50px",
-									width: "10%",
+									minHeight: "50px",
 									display: "flex",
-									justifyContent: "center",
-									alignItems: "center"
+									flexDirection: "row",
+									borderBottom: "1px solid #ADAAAB",
+									marginTop: "5px",
 								}}>
-									<FaTrashAlt size={24} color="#0070D9" />
-								</div>
+									<div style={{
+										height: "50px",
+										width: "10%",
+										display: "flex",
+										justifyContent: "center",
+										alignItems: "center"
+									}}>
+										<FaTrashAlt size={24} color="#0070D9" />
+									</div>
 
-								<div style={{
-									height: "50px",
-									width: "70%",
-									fontWeight: "bold",
-									fontSize: "25px",
-									display: "flex",
-									alignItems: "center"
-								}}>{data.word}</div>
+									<div style={{
+										height: "50px",
+										width: "70%",
+										fontWeight: "bold",
+										fontSize: "25px",
+										display: "flex",
+										alignItems: "center"
+									}}>{item.word}</div>
 
-								<div style={{
-									height: "50px",
-									width: "20%",
-									display: "flex",
-									justifyContent: "center",
-									alignItems: "center",
-								}}>
-									<button style={{
-										background: "transparent",
-										border: "none",
-										cursor: "pointer"
-									}} onClick={handleBTNtudienClick}>
-										<img src={BTNtudien} alt="Dictionary" style={{ width: "40px", height: "40px" }} />
-									</button>
-									<button style={{
-										background: "transparent",
-										border: "none",
-										cursor: "pointer"
-									}} onClick={handleBtnPhatAmClick}>
-										<img src={BTNmieng} alt="Pronunciation" style={{ width: "40px", height: "40px" }} />
-									</button>
+									<div style={{
+										height: "50px",
+										width: "20%",
+										display: "flex",
+										justifyContent: "center",
+										alignItems: "center",
+									}}>
+										<button style={{
+											background: "transparent",
+											border: "none",
+											cursor: "pointer"
+										}} onClick={handleBTNtudienClick}>
+											<img src={BTNtudien} alt="Dictionary" style={{ width: "40px", height: "40px" }} />
+										</button>
+										<button style={{
+											background: "transparent",
+											border: "none",
+											cursor: "pointer"
+										}} onClick={handleBtnPhatAmClick}>
+											<img src={BTNmieng} alt="Pronunciation" style={{ width: "40px", height: "40px" }} />
+										</button>
+									</div>
 								</div>
-							</div>
+							))
+							};
 
 
 						</div>
