@@ -31,7 +31,7 @@ const StageHeader2 = ({ isList, title, name }) => {
                 display: "flex",
                 fontFamily: "Inter, sans-serif",
             }}>
-                <p style={{color: '#FFF6C8', fontSize: '25px', fontWeight: 'bold'}} >{title}</p>
+                <p style={{color: '#FFF6C8', fontSize: '20px', fontWeight: 'bold'}} >{title}</p>
             </div>
             <div style={{
                 width: "20%",

@@ -19,16 +19,27 @@ const Layer = (props) => {
 	const [dataDictionarys, setDataDictionarys] = useState();
 	const { user, isLoading, onLoginWithGoogle, onLogout } = useFirebase();
 
+	const [language, setLanguage] = useState("VIE");
+	const [currentWordData, setCurrentWordData] = useState(data);
+
+
+
 	const labels = [
 		{ text: "DANH TỪ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
 		{ text: "ĐỘNG TỪ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
 		{ text: "TÍNH TỪ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
 	];
 
+	const englabels = [
+		{ text: "NOUN", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
+		{ text: "VERB", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
+		{ text: "ADJ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
+	];
+
 	const getText = () => {
-		if (activeLabel === "DANH TỪ") return data?.noun || {};
-		else if (activeLabel === "ĐỘNG TỪ") return data?.verb || {};
-		else if (activeLabel === "TÍNH TỪ") return data?.adj || {};
+		if (activeLabel === "DANH TỪ" || activeLabel === "NOUN") return currentWordData?.noun || {};
+		else if (activeLabel === "ĐỘNG TỪ" || activeLabel === "VERB") return currentWordData?.verb || {};
+		else if (activeLabel === "TÍNH TỪ" || activeLabel === "ADJ") return currentWordData?.adj || {};
 	};
 
 	const handleClick = (label) => {
@@ -80,6 +91,7 @@ const Layer = (props) => {
 		setShowMispronounce((prevState) => !prevState); // Toggle Mispronounce
 	};
 
+	
 	return (
 		<div
 			style={{
@@ -144,7 +156,7 @@ const Layer = (props) => {
 			{/*================== show lists have been saved ====================*/}
 			{showSave ? (
 				<>
-					<StageHeader isList={true} name={data.word} />
+					<StageHeader isList={true} name={currentWordData.word} language={language} setLanguage={setLanguage} />
 					<div style={{
 						width: "550px",
 						height: "360px",
@@ -214,14 +226,23 @@ const Layer = (props) => {
 											background: "transparent",
 											border: "none",
 											cursor: "pointer"
-										}} onClick={handleBTNtudienClick}>
+										}} onClick={async () => {
+											const fullWordData = await findWord(item.word); // Fetch full definition
+											setCurrentWordData(fullWordData);
+											handleBTNtudienClick();
+										  }}
+										>
 											<img src={BTNtudien} alt="Dictionary" style={{ width: "40px", height: "40px" }} />
 										</button>
 										<button style={{
 											background: "transparent",
 											border: "none",
 											cursor: "pointer"
-										}} onClick={handleBtnPhatAmClick}>
+										}} onClick={async () => {
+											const fullWordData = await findWord(item.word); // Fetch full definition
+											setCurrentWordData(fullWordData);
+											handleBtnPhatAmClick();
+										  }}>
 											<img src={BTNmieng} alt="Pronunciation" style={{ width: "40px", height: "40px" }} />
 										</button>
 									</div>
@@ -243,13 +264,14 @@ const Layer = (props) => {
 				</>
 			) : (
 				<>
-					<StageHeader isList={false} name={data.word} />
+					<StageHeader isList={false} name={currentWordData.word} language={language} setLanguage={setLanguage} />
 					{showMispronounce ? (
-						<Mispronounce name={data.word} />
+						<Mispronounce name={currentWordData.word} language={language} />
 					) : (
 						<Stage1
 							activeLabel={activeLabel}
-							labels={labels}
+							labels={language === "VIE" ? labels : englabels}
+							language={language}
 							handleClick={handleClick}
 							getText={getText}
 						/>

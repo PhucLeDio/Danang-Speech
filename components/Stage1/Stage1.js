@@ -14,7 +14,10 @@ synonym
 * antonym
 * */
 
-const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
+const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
+	const antonymList = {vie: "TRÁI NGHĨA", eng: "ANTONYM"}
+	const synonymList = {vie: "ĐỒNG NGHĨA", eng: "SYNONYMOUS"}
+
 	// return;
 	return (
 		<div
@@ -73,11 +76,11 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 						gap: "15px",
 					}}>
 					<Example
-						textType={"ĐỒNG NGHĨA"}
+						textType={language === "VIE" ? synonymList.vie : synonymList.eng}
 						TuNgu={getText().synonym}
 					/>
 					<Example
-						textType={"TRÁI NGHĨA"}
+						textType={language === "VIE" ? antonymList.vie : antonymList.eng}
 						TuNgu={getText().antonym}
 					/>
 				</div>
@@ -98,8 +101,10 @@ const Stage1 = ({ activeLabel, labels, handleClick, getText }) => {
 								height={"60px"}
 								width={"90%"}
 								fontPadding={"10px"}
-								text={`<div style="display: inline-block; padding: 3px 15px; background-color: #0070D9; color: #FFF6C8; border-radius: 30px;">
+								text={language === 'VIE' ? `<div style="display: inline-block; padding: 3px 15px; background-color: #0070D9; color: #FFF6C8; border-radius: 30px;">
 									Ví dụ
+								</div> ` + getText().example : `<div style="display: inline-block; padding: 3px 15px; background-color: #0070D9; color: #FFF6C8; border-radius: 30px;">
+									Example
 								</div> ` + getText().example}
 								paddingLeft={"10px"}
 								fontSize={"17.5px"}

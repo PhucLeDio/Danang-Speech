@@ -4,13 +4,18 @@ import BTN from "../components/images/Sound.png";
 
 import "../components/style/Volume.css";
 
-const Volume = ({ isList, name, isLabel }) => {
+const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 	const [speed, setSpeed] = useState(1.0);
 	// get text
 	// const { isList, name, isLabel } = props;
 	const audioRef = useRef(null);
 
-	const [selected, setSelected] = useState("VIE");
+	// Replace local `selected` state with the prop `language`
+	const selected = language;
+
+	const handleLanguageChange = (lang) => {
+		setLanguage(lang);
+	};
 
 	const requestViettelAI = async (voice) => {
 		let voiceCode = "";
@@ -110,7 +115,7 @@ const Volume = ({ isList, name, isLabel }) => {
 						}}
 					>
 						<div
-							onClick={() => setSelected("VIE")}
+							onClick={() => handleLanguageChange("VIE")}
 							style={{
 								flex: 1,
 								textAlign: "center",
@@ -124,7 +129,7 @@ const Volume = ({ isList, name, isLabel }) => {
 							VIE
 						</div>
 						<div
-							onClick={() => setSelected("ENG")}
+							onClick={() => handleLanguageChange("ENG")}
 							style={{
 								flex: 1,
 								textAlign: "center",
@@ -181,7 +186,7 @@ const Volume = ({ isList, name, isLabel }) => {
 						}}
 					>
 						<div
-							onClick={() => setSelected("VIE")}
+							onClick={() => handleLanguageChange("ENG")}
 							style={{
 								flex: 1,
 								textAlign: "center",
@@ -195,7 +200,7 @@ const Volume = ({ isList, name, isLabel }) => {
 							VIE
 						</div>
 						<div
-							onClick={() => setSelected("ENG")}
+							onClick={() => handleLanguageChange("ENG")}
 							style={{
 								flex: 1,
 								textAlign: "center",
