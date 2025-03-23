@@ -3,8 +3,11 @@ import Speak from "../Speak";
 import Volume from "../Volume";
 // import BTN from "../images/mic-speak.png";
 import StageHeader2 from "./StageHeader2";
+import { useState } from "react";
 
 const Mispronounce = ({ name, language }) => {
+	const [checkSpeaking, setCheckSpeaking] = useState("");
+
 	return (
 		<div
 			style={{
@@ -27,7 +30,7 @@ const Mispronounce = ({ name, language }) => {
 					boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
 					borderRadius: "20px",
 				}}>
-					<StageHeader2 isList={false} title={language === 'VIE' ? "Phát âm chính xác từ" : "Pronounce word correctly"} name={name} />
+					<StageHeader2 isList={false} title={language === 'VIE' ? "Phát âm chính xác từ" : "Pronounce word correctly"} name={name} setCheckSpeaking={setCheckSpeaking} />
 					<div style={{
 						background: "#FFF6C8",
 						height: "90px",
@@ -61,7 +64,7 @@ const Mispronounce = ({ name, language }) => {
 							justifyContent: "center",
 							alignItems: "center",
 							alignContent: "center",
-						}}>{name}</div>
+						}} dangerouslySetInnerHTML={{ __html: checkSpeaking }}></div>
 					</div>
 				</div>
 
