@@ -5,12 +5,12 @@ import "../components/style/Volume.css";
 
 import Label from "./Label";
 
-const Speak = ({name}) => {
+const Speak = ({name, setCheckSpeaking}) => {
 	const [recording, setRecording] = useState(false);
 	const [isRecordingEffect, setIsRecordingEffect] = useState(false); // Hiệu ứng ghi âm
 	const mediaRecorderRef = useRef(null);
 	const audioChunksRef = useRef([]);
-	const [checkSpeaking, setCheckSpeaking] = useState("Kiểm tra phát âm");
+	// const [checkSpeaking, setCheckSpeaking] = useState("Kiểm tra phát âm");
 
 	const startRecording = async () => {
 		try {
