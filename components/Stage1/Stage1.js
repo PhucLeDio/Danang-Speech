@@ -1,7 +1,7 @@
 import React from "react";
 import Label from "../Label";
 import Example from "../Example";
-import UpdatelatestImg from "/home/conanwinner/Desktop/_CODE/Danang-Speech/assets/updatelatest.png"
+import UpdatelatestImg from "../images/updatelatest.png"
 
 /*
 *
