@@ -1,6 +1,3 @@
-import wordDict from "assets/word.json";
-import wordDict_2 from "assets/output_8k.json";
-
 import "assets/css/style.css";
 
 import ResultPage from "~pages/Result";

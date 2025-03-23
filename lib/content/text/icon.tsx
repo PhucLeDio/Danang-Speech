@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ReactDom from "react-dom";
 import Icon from "react:assets/iconn.svg";
-import {findWord} from "../../../api/api";
+import {findWord, genWordByN8N, saveWord} from "../../../api/api";
 
 import ResultPopup from "./result";
 
@@ -27,17 +27,37 @@ export default function IconPopup(props) {
 
 const showResultPopup = async (mousePos, selectedText) => {
 	let result = await findWordFunc(selectedText);
-	console.log(selectedText);
 	console.log(result);
 
 	if (
-		!result
+		result == "word not found"
 	) {
-		console.log("Dictionary do not have that word");
+
+		// call api n8n find word
+
+		let word = await genWordByN8N(selectedText);
+		// call api execute save word not found
+		let resSaveWord = await saveWord(word);
+		console.log(resSaveWord);
+
+		word._id = resSaveWord.id_word
+
+		console.log(word);
+
+		const container = document.createElement("div");
+		ReactDom.render(
+			<ResultPopup selectedText={selectedText} mousePos={mousePos} data={word} />,
+			container
+		);
+		document.body.appendChild(container);
 		const icon = document.querySelector("svg#icon");
 		icon.remove();
+
+
 	} else {
+
 		const container = document.createElement("div");
+
 		ReactDom.render(
 			<ResultPopup selectedText={selectedText} mousePos={mousePos} data={result} />,
 			container
@@ -46,4 +66,5 @@ const showResultPopup = async (mousePos, selectedText) => {
 		const icon = document.querySelector("svg#icon");
 		icon.remove();
 	}
+
 }
