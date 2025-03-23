@@ -22,8 +22,6 @@ const Layer = (props) => {
 	const [language, setLanguage] = useState("VIE");
 	const [currentWordData, setCurrentWordData] = useState(data);
 
-
-
 	const labels = [
 		{ text: "DANH TỪ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
 		{ text: "ĐỘNG TỪ", borderColor: "#3089D5", backgroundColor: "#FFF6C8", color: "#0083E1" },
@@ -73,8 +71,6 @@ const Layer = (props) => {
 			*/
 
 			// call api from file: api.ts
-
-
 			console.log(data);
 			await saveDictionary(user.uid, data._id, data.word);
 
@@ -91,7 +87,6 @@ const Layer = (props) => {
 		setShowMispronounce((prevState) => !prevState); // Toggle Mispronounce
 	};
 
-	
 	return (
 		<div
 			style={{
@@ -228,6 +223,9 @@ const Layer = (props) => {
 											cursor: "pointer"
 										}} onClick={async () => {
 											const fullWordData = await findWord(item.word); // Fetch full definition
+											console.log("fullWordData");
+
+											console.log(fullWordData);
 											setCurrentWordData(fullWordData);
 											handleBTNtudienClick();
 										  }}

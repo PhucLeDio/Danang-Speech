@@ -1,6 +1,7 @@
 import React from "react";
 import Label from "../Label";
 import Example from "../Example";
+import UpdatelatestImg from "/home/conanwinner/Desktop/_CODE/Danang-Speech/assets/updatelatest.png"
 
 /*
 *
@@ -120,6 +121,9 @@ const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
 							{getText().img ? (
 								<img
 									src={`https://vmdstorageimages.blob.core.windows.net/vmdimages/${getText().img}_1.jpg`}
+									onError={(e) => {
+										e.target.src = UpdatelatestImg;
+									}}
 									style={{
 										height: "93%",
 										width: "100%",
@@ -129,7 +133,7 @@ const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
 								/>
 							) : (
 								<img
-									src="https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg"
+									src={UpdatelatestImg}
 									style={{
 										height: "90%",
 										width: "100%",
