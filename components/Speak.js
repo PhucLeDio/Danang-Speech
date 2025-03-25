@@ -109,7 +109,8 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 						}
 						count++;
 						if (count === 2) {
-							tmp += " ";
+							tmp += "&nbsp;";
+							count = 0;
 						}
 					});
 

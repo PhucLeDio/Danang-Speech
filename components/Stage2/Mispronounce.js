@@ -78,7 +78,8 @@ const Mispronounce = ({ name, language }) => {
 						justifyContent: "center",
 						alignItems: "center",
 						alignContent: "center",
-					}} dangerouslySetInnerHTML={{ __html: checkSpeaking }}></div>
+						whiteSpace: "pre-wrap"
+					}}  dangerouslySetInnerHTML={{ __html: checkSpeaking }}></div>
 				</div>
 			</div>
 
@@ -117,6 +118,8 @@ const Mispronounce = ({ name, language }) => {
 						justifyContent: "center",
 						alignItems: "center",
 						alignContent: "center",
+						whiteSpace: "pre-wrap"
+
 					}}>{selectSentence(name)}</div>
 					<div style={{
 						height: "100%",
@@ -125,10 +128,8 @@ const Mispronounce = ({ name, language }) => {
 						borderWidth: "40%",
 						fontSize: "20px",
 						fontWeight: "bold",
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						alignContent: "center",
+						whiteSpace: "pre-wrap",
+						wordBreak: "break-word"
 					}} dangerouslySetInnerHTML={{ __html: checkSentence }}></div>
 				</div>
 			</div>
