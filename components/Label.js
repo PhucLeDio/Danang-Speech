@@ -17,7 +17,7 @@ const Label = ({
 	boxShadow,
 	fontWeight,
 	cursor,
-	maxHeight // Thêm maxHeight cho cuộn dọc
+	maxHeight
 }) => {
 	return (
 		<div
@@ -26,14 +26,11 @@ const Label = ({
 				width: width || "100%",
 				border: border || "1px solid #FFF6C8",
 				height: height || "auto",
-				maxHeight: maxHeight || height || "auto", // Giới hạn chiều cao để kích hoạt cuộn
+				maxHeight: maxHeight || height || "auto",
 				backgroundColor: backgroundColor || "#FFF6C8",
 				borderRadius: "10px",
 				textAlign: textAlign,
 				alignContent: alignContent,
-				// boxShadow:
-				// 	boxShadow ||
-				// 	"0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.5)",
 				boxShadow: boxShadow || "0px 4px 10px rgba(0, 0, 0, 0.2)",
 				paddingLeft: paddingLeft,
 				color: color,
@@ -41,8 +38,8 @@ const Label = ({
 				fontSize: fontSize || "15px",
 				padding: fontPadding,
 				cursor: cursor,
-				overflowY: "auto", // Chỉ kích hoạt cuộn dọc
-				overflowX: "hidden" // Tắt cuộn ngang
+				overflowY: "auto",
+				overflowX: "hidden"
 			}}>
 			{text ? (
 				<span dangerouslySetInnerHTML={{ __html: text }}></span>

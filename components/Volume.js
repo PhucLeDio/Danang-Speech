@@ -39,7 +39,7 @@ const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 				voiceCode = "hcm-minhquan";
 		}
 
-		const token = "7c93af3fac24ec2c05033833e8896b4c"; // Token
+		const token = "c233fd87fd0a4ee2da3835b9d60a0264"; // Token
 		const url = "https://viettelai.vn/tts/speech_synthesis";
 
 		const payload = {
@@ -97,7 +97,10 @@ const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 							width={40}
 							height={40}
 							alt="Button Sounds"
-							onClick={() => requestViettelAI("Northern Woman")}
+							onClick={() => {
+								console.log(name);
+								requestViettelAI("Northern Woman");
+							}}
 							style={{ cursor: "pointer" }}
 						/>
 					</div>
@@ -158,10 +161,16 @@ const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 						width={43}
 						height={43}
 						alt="Button Sounds"
-						onClick={() => requestViettelAI("Northern Woman")}
+						onClick={() => {
+							console.log(name);
+							requestViettelAI("Northern Woman")
+						}}
 						style={{ cursor: "pointer" }}
 					/>
+					<audio ref={audioRef} style={{ display: "none" }}></audio>
+
 				</div>
+
 			)
 		) : (
 			<div
@@ -215,7 +224,6 @@ const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 						</div>
 					</div>
 	
-					<audio ref={audioRef} style={{ display: "none" }}></audio>
 				</div>
 		)
 	);

@@ -5,7 +5,7 @@ import "../components/style/Volume.css";
 
 import Label from "./Label";
 
-const Speak = ({name, setCheckSpeaking}) => {
+const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 	const [recording, setRecording] = useState(false);
 	const [isRecordingEffect, setIsRecordingEffect] = useState(false); // Hiệu ứng ghi âm
 	const mediaRecorderRef = useRef(null);
@@ -62,8 +62,6 @@ const Speak = ({name, setCheckSpeaking}) => {
 			const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 
 			const channelData = audioBuffer.getChannelData(0); // Float32Array [-1.0, 1.0]
-			console.log("Waveform length:", channelData.length);
-			console.log("Last 10 samples:", channelData.slice(-100));
 
 			return Array.from(channelData);
 		} catch (error) {
@@ -115,7 +113,12 @@ const Speak = ({name, setCheckSpeaking}) => {
 						}
 					});
 
-					setCheckSpeaking(tmp.trim());
+					if (select === "word") {
+						setCheckSpeaking(tmp.trim());
+					} else {
+						setCheckSentence(tmp.trim());
+					}
+
 					// checkSpeaking
 				} else {
 					alert("Error from server!");

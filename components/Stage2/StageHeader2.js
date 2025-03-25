@@ -2,7 +2,7 @@ import React from "react";
 import Speak from "../Speak";
 import Volume from "../Volume";
 
-const StageHeader2 = ({ isList, title, name, setCheckSpeaking }) => {
+const StageHeader2 = ({ isList, title, name, setCheckSpeaking, setCheckSentence, select }) => {
     return (
         <div style={{
             background: "#0070D9",
@@ -20,7 +20,7 @@ const StageHeader2 = ({ isList, title, name, setCheckSpeaking }) => {
                 alignContent: "center",
                 display: "flex",
             }}>
-                <Speak name={name} setCheckSpeaking={setCheckSpeaking} />
+                <Speak name={name} setCheckSpeaking={setCheckSpeaking} setCheckSentence={setCheckSentence} select={select}/>
             </div>
             <div style={{
                 width: "60%",

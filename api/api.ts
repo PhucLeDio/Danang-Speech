@@ -1,6 +1,6 @@
 import {
     API_FIND_NEW_WORD,
-    API_SAVE_WORD_NOT_FOUND,
+    API_SAVE_WORD_NOT_FOUND, DELETE_DICTIONARY_BY_ID_DISC,
     FIND_DICTIONARY_BY_ID_USER,
     FIND_WORD_ENDPOINT,
     SAVE_DICTIONARY_ENDPOINT
@@ -18,6 +18,37 @@ export const saveDictionary = async (id_user: string, id_dics: string, word: str
 
     try {
         const response = await fetch(SAVE_DICTIONARY_ENDPOINT, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error("Error sending POST request:", error);
+        throw error;
+    }
+};
+
+export const deleteDictionary = async (id_user: string, id_dics: string, word: string) => {
+    const payload = {
+        "id_user": id_user,
+        "dics": {
+            "id_dics": id_dics,
+            "word": word,
+        },
+
+    };
+
+    try {
+        const response = await fetch(DELETE_DICTIONARY_BY_ID_DISC, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

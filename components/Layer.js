@@ -8,7 +8,7 @@ import BtnTuyChon from "./images/BtnTuyChon.png";
 import BTNtudien from "./images/BTNtudien.png";
 import BTNmieng from "./images/BTNmieng.png"
 import { useFirebase } from "../firebase/useFirebase";
-import {findDictionarysByIdUser, findWord, saveDictionary} from "../api/api";
+import {deleteDictionary, findDictionarysByIdUser, findWord, saveDictionary} from "../api/api";
 import { FaTrashAlt } from "react-icons/fa";
 
 const Layer = (props) => {
@@ -179,74 +179,60 @@ const Layer = (props) => {
 							overflowX: "hidden"
 						}}>
 
-							{/* Loops data parse  */
-
-							dataDictionarys.dics.map((item, index) => (
+							{dataDictionarys?.dics?.map((item, index) => (
 								<div key={item.id_dics || index} style={{
 									width: "90%",
-									height: "50px",
 									minHeight: "50px",
 									display: "flex",
-									flexDirection: "row",
+									alignItems: "center",
 									borderBottom: "1px solid #ADAAAB",
 									marginTop: "5px",
 								}}>
-									<div style={{
-										height: "50px",
-										width: "10%",
-										display: "flex",
-										justifyContent: "center",
-										alignItems: "center"
-									}}>
-										<FaTrashAlt size={24} color="#0070D9" />
+									<div style={{ width: "10%", textAlign: "center" }}>
+										<button
+											style={{ background: "transparent", border: "none", cursor: "pointer" }}
+											onClick={async () => {
+												await deleteDictionary(user.uid, item.id_dics, item.word);
+												setDataDictionarys(prev => ({
+													...prev,
+													dics: prev.dics.filter(dic => dic.id_dics !== item.id_dics)
+												}));
+											}}
+										>
+											<FaTrashAlt size={24} color="#0070D9" />
+										</button>
 									</div>
 
-									<div style={{
-										height: "50px",
-										width: "70%",
-										fontWeight: "bold",
-										fontSize: "25px",
-										display: "flex",
-										alignItems: "center"
-									}}>{item.word}</div>
+									<div style={{ width: "70%", fontWeight: "bold", fontSize: "25px" }}>
+										{item.word}
+									</div>
 
-									<div style={{
-										height: "50px",
-										width: "20%",
-										display: "flex",
-										justifyContent: "center",
-										alignItems: "center",
-									}}>
-										<button style={{
-											background: "transparent",
-											border: "none",
-											cursor: "pointer"
-										}} onClick={async () => {
-											const fullWordData = await findWord(item.word); // Fetch full definition
-											console.log("fullWordData");
-
-											console.log(fullWordData);
-											setCurrentWordData(fullWordData);
-											handleBTNtudienClick();
-										  }}
+									<div style={{ width: "20%", display: "flex", justifyContent: "center", gap: "10px" }}>
+										<button
+											style={{ background: "transparent", border: "none", cursor: "pointer" }}
+											onClick={async () => {
+												const fullWordData = await findWord(item.word);
+												setCurrentWordData(fullWordData);
+												handleBTNtudienClick();
+											}}
 										>
 											<img src={BTNtudien} alt="Dictionary" style={{ width: "40px", height: "40px" }} />
 										</button>
-										<button style={{
-											background: "transparent",
-											border: "none",
-											cursor: "pointer"
-										}} onClick={async () => {
-											const fullWordData = await findWord(item.word); // Fetch full definition
-											setCurrentWordData(fullWordData);
-											handleBtnPhatAmClick();
-										  }}>
+
+										<button
+											style={{ background: "transparent", border: "none", cursor: "pointer" }}
+											onClick={async () => {
+												const fullWordData = await findWord(item.word);
+												setCurrentWordData(fullWordData);
+												handleBtnPhatAmClick();
+											}}
+										>
 											<img src={BTNmieng} alt="Pronunciation" style={{ width: "40px", height: "40px" }} />
 										</button>
 									</div>
 								</div>
-							))
-							};
+							))}
+
 
 
 						</div>
@@ -264,7 +250,7 @@ const Layer = (props) => {
 				<>
 					<StageHeader isList={false} name={currentWordData.word} language={language} setLanguage={setLanguage} />
 					{showMispronounce ? (
-						<Mispronounce name={currentWordData.word} language={language} />
+						<Mispronounce name={currentWordData} language={language} />
 					) : (
 						<Stage1
 							activeLabel={activeLabel}
