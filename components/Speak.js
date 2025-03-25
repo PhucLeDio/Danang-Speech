@@ -10,6 +10,8 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 	const [isRecordingEffect, setIsRecordingEffect] = useState(false); // Hiệu ứng ghi âm
 	const mediaRecorderRef = useRef(null);
 	const audioChunksRef = useRef([]);
+	const [isLoading, setIsLoading] = useState(false);
+
 	// const [checkSpeaking, setCheckSpeaking] = useState("Kiểm tra phát âm");
 
 	const startRecording = async () => {
@@ -39,7 +41,7 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 
 			mediaRecorder.start();
 			setRecording(true);
-			setIsRecordingEffect(true); // Bật hiệu ứng ghi âm
+			setIsRecordingEffect(true);
 		} catch (error) {
 			console.error("Error accessing microphone:", error);
 		}
@@ -83,6 +85,7 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 			};
 
 			try {
+				setIsLoading(true);
 				const response = await fetch(
 					CHECK_PRONOUNCE,
 					{
@@ -103,9 +106,9 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 					console.log(result.response);
 					result.response.map(([char, status]) => {
 						if (status === 1) {
-							tmp += `<span style="color: #fa4a4a;">${char}</span>`;
+							tmp += `<span style="color: #f16d07;">${char}</span>`;
 						} else {
-							tmp += `<span style="color: #aff63d;">${char}</span>`;
+							tmp += `<span style="color: #a4ef1b;">${char}</span>`;
 						}
 						count++;
 						if (count === 2) {
@@ -127,6 +130,8 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 			} catch (error) {
 				console.error("Error sending audio data:", error);
 				alert("Failed to send audio data!");
+			} finally {
+				setIsLoading(false);
 			}
 		} else {
 			alert("Please record first!");
@@ -134,31 +139,45 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 	};
 
 	return (
-		<button
-			onClick={recording ? stopRecording : startRecording}
-			style={{
-				cursor: "pointer",
-				border: "none",
-				backgroundColor: "#0070D9",
-				animation: isRecordingEffect
-					? "blink 1s infinite"
-					: "none",
-				paddingTop: "5px",
-				paddingBottom: "5px",
-				marginRight: "5px",
-				borderRadius: "50%",
-				display: "flex"
-			}}>
-			<img
-				src={BTN}
-				style={{ color: "#AAAAAA" }}
-				width={32}
-				height={32}
-				borderRadius="50%"
-				alt="Button speak"
-			/>
-		</button>
+		<>
+			<button
+				onClick={recording ? stopRecording : startRecording}
+				style={{
+					cursor: "pointer",
+					border: "none",
+					backgroundColor: "#0070D9",
+					animation: isRecordingEffect
+						? "blink 1s infinite"
+						: "none",
+					paddingTop: "5px",
+					paddingBottom: "5px",
+					marginRight: "5px",
+					borderRadius: "50%",
+					display: "flex"
+				}}>
+				<img
+					src={BTN}
+					style={{ color: "#AAAAAA" }}
+					width={32}
+					height={32}
+					borderRadius="50%"
+					alt="Button speak"
+				/>
+			</button>
+
+			{isLoading && (
+				<div className="fullscreen-loading">
+					<div className="spinner" />
+				</div>
+			)}
+		</>
 	);
+
+
+
+
+
+
 };
 
 export default Speak;
