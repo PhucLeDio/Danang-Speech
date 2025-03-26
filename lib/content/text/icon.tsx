@@ -16,7 +16,7 @@ export default function IconPopup(props) {
 			id="icon"
 			style={{
 				position: "absolute",
-				background: "white",
+				background: "transparent",
 				top: props.mousePos.y,
 				left: props.mousePos.x + 10,
 				zIndex: "10000000000"
