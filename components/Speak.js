@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { CHECK_PRONOUNCE} from "~config/config";
 import BTN from "../components/images/mic-speak.png";
 import "../components/style/Volume.css";
-
+import "../style.css"
 import Label from "./Label";
 
 const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {

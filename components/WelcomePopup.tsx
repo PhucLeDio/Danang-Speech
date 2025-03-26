@@ -1,5 +1,6 @@
 import { useFirebase } from "~firebase/useFirebase";
 import Header from "../components/Header";
+import "../style.css"
 
 export default function WelcomePopup({ user, onClose }) {
     const { onLogout } = useFirebase(); // Import logout function

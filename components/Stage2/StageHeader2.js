@@ -1,6 +1,7 @@
 import React from "react";
 import Speak from "../Speak";
 import Volume from "../Volume";
+import "../../style.css"
 
 const StageHeader2 = ({ isList, title, name, setCheckSpeaking, setCheckSentence, select }) => {
     return (

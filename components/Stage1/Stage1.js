@@ -2,6 +2,7 @@ import React from "react";
 import Label from "../Label";
 import Example from "../Example";
 import UpdatelatestImg from "../images/updatelatest.png"
+import "../../style.css"
 
 /*
 *
@@ -36,7 +37,7 @@ const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
 						height={"130px"}
 						width={"92%"}
 						fontPadding={"10px"}
-						fontSize={"20px"}
+						fontSize={"18px"}
 						fontWeight={"bold"}
 						color={"#242C32"}
 					/>
@@ -108,7 +109,7 @@ const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
 									Example
 								</div> ` + getText().example}
 								paddingLeft={"10px"}
-								fontSize={"17.5px"}
+								fontSize={"15.5px"}
 								color={"#242C32"}
 								fontWeight={"bold"}
 							/>

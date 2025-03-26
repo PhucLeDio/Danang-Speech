@@ -3,6 +3,7 @@ import Register from "./pages/Register"
 import { useState, useEffect } from "react"
 import WelcomePopup from "./components/WelcomePopup"
 import { useFirebase } from "~firebase/useFirebase"
+import "./style.css"
 
 export default function Popup() {
   const [isLogin, setIsLogin] = useState(true)

@@ -1,6 +1,7 @@
 import React from "react";
 import StageHeader2 from "./StageHeader2";
 import { useState } from "react";
+import "../../style.css"
 
 function selectSentence(name) {
 	if (name?.noun !== undefined) {

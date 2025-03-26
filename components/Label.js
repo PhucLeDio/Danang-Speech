@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../components/style/Lable.css";
+import "../style.css"
 
 const Label = ({
 	textAlign,

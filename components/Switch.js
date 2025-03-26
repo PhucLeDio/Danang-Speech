@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/style/Switch.css';
+import "../style.css"
 
 const SwitchField = ({ label, checked, onChange }) => {
   return (

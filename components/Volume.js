@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import BTN from "../components/images/Sound.png";
 
 import "../components/style/Volume.css";
+import "../style.css"
 
 const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
 	const [speed, setSpeed] = useState(1.0);

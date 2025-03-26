@@ -6,10 +6,12 @@ import BtnLuuTu from "./images/BtnLuuTu.png";
 import BtnPhatAm from "./images/BtnPhatAm.png";
 import BtnTuyChon from "./images/BtnTuyChon.png";
 import BTNtudien from "./images/BTNtudien.png";
+import BTNdictionary from "./images/BTNdictionary.png";
 import BTNmieng from "./images/BTNmieng.png"
 import { useFirebase } from "../firebase/useFirebase";
 import {deleteDictionary, findDictionarysByIdUser, findWord, saveDictionary} from "../api/api";
 import { FaTrashAlt } from "react-icons/fa";
+import "../style.css"
 
 const Layer = (props) => {
 	const { data } = props;
@@ -18,6 +20,8 @@ const Layer = (props) => {
 	const [showSave, setShowSave] = useState(false);
 	const [dataDictionarys, setDataDictionarys] = useState();
 	const { user, isLoading, onLoginWithGoogle, onLogout } = useFirebase();
+
+	const [tudien, setTudien] = useState(false);
 
 	const [language, setLanguage] = useState("VIE");
 	const [currentWordData, setCurrentWordData] = useState(data);
@@ -44,13 +48,14 @@ const Layer = (props) => {
 		setActiveLabel(label);
 	};
 
-	const toggleMispronounce = () => {
-		setShowMispronounce(!showMispronounce);
+	const toggleTudien = () => {
+		setTudien(!tudien);
 	};
 
 	const toggleSave = async () => {
 		setDataDictionarys(await findDictionarysByIdUser(user.uid))
 		setShowSave(!showSave);
+		// setTudien(!tudien);
 	};
 
 	const saveDics = async () => {
@@ -84,6 +89,7 @@ const Layer = (props) => {
 
 	const handleBtnPhatAmClick = () => {
 		setShowSave(false); // Hide the save section
+		setTudien(!tudien); // Toggle Dictionary
 		setShowMispronounce((prevState) => !prevState); // Toggle Mispronounce
 	};
 
@@ -100,7 +106,7 @@ const Layer = (props) => {
 		>
 			<div>
 				<button
-					onClick={toggleSave}
+					onClick={() => {user ? toggleSave() : alert("You are not sign in")}}
 					style={{
 						position: "absolute",
 						top: "-18px",
@@ -126,11 +132,12 @@ const Layer = (props) => {
 						outline: "none",
 					}}
 				>
-					<img src={BtnPhatAm} alt="Pronunciation" style={{ width: "35px", height: "35px" }} />
+					<img src={tudien === true ? BTNdictionary : BtnPhatAm} alt="Pronunciation" style={{ width: "35px", height: "35px" }} />
 				</button>
 
 				<button
 					onClick={() => {
+						!user ? alert("Please sign in to save word") : 
 						alert("Save word Clicked");
 						saveDics();
 					}}

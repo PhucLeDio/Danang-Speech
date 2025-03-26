@@ -1,6 +1,7 @@
 import React from "react";
 import Label from "../Label";
 import Volume from "../Volume";
+import "../../style.css"
 
 const StageHeader = ({isList, name, language, setLanguage }) => {
     return (

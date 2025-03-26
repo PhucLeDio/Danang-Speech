@@ -2,6 +2,7 @@ import React from "react";
 
 import Layer from "../components/Layer";
 import MainFrame from "../components/Frame/MainFrame"
+import "../style.css"
 
 const ResultPage = (props) => {
 	const { data } = props;

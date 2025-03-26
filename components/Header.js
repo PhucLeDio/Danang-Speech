@@ -1,5 +1,6 @@
 import React from "react";
 import LOGO from "./images/LOGO.png";
+import "../style.css"
 
 const Header = ({boxShadow}) => {
     return (
