@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { CHECK_PRONOUNCE} from "~config/config";
+import {CHECK_PRONOUNCE, URL_API} from "~config/config";
 import BTN from "../components/images/mic-speak.png";
 import "../components/style/Volume.css";
+import "../components/style/Loading.css";
 import "../style.css"
 import Label from "./Label";
 
@@ -91,31 +92,60 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 					{
 						method: "POST",
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
 						},
 						body: JSON.stringify(data)
+
 					}
 				);
 
 				console.log(response);
+				let ans = []
+				let check = false;
 
 				if (response.ok) {
 					const result = await response.json();
-					let count = 0;
 					let tmp = "";
+					let idx = 0;
 					console.log(result.response);
-					result.response.map(([char, status]) => {
+
+
+					let ans = [];
+					let count = 0;
+
+					for (let i = 0; i < name.length; i++) {
+						if (name[i] !== ' ') {
+							count++;
+						} else {
+							ans.push(count);
+							count = 0;
+						}
+					}
+					ans.push(count);
+
+					let charCount = 0;
+					let wordIndex = 0;
+
+					for (let i = 0; i < result.response.length; i++) {
+						const [char, status] = result.response[i];
+
 						if (status === 1) {
-							tmp += `<span style="color: #f16d07;">${char}</span>`;
+							tmp += `<span style="color: #f16d07;">${ (i === 0) ? char.charAt(0).toUpperCase() + char.slice(1): char }</span>`;
 						} else {
 							tmp += `<span style="color: #a4ef1b;">${char}</span>`;
 						}
-						count++;
-						if (count === 2) {
+
+						charCount += char.length;
+
+						if (charCount === ans[wordIndex]) {
 							tmp += "&nbsp;";
-							count = 0;
+							wordIndex++;
+							charCount = 0;
 						}
-					});
+					}
+
+
+
 
 					if (select === "word") {
 						setCheckSpeaking(tmp.trim());
@@ -127,6 +157,35 @@ const Speak = ({name, setCheckSpeaking, setCheckSentence, select}) => {
 				} else {
 					alert("Error from server!");
 				}
+
+				// if (response.ok) {
+				// 	const result = await response.json();
+				// 	let count = 0;
+				// 	let tmp = "";
+				// 	console.log(result.response);
+				// 	result.response.map(([char, status]) => {
+				// 		if (status === 1) {
+				// 			tmp += `<span style="color: #f16d07;">${char}</span>`;
+				// 		} else {
+				// 			tmp += `<span style="color: #a4ef1b;">${char}</span>`;
+				// 		}
+				// 		count++;
+				// 		if (count === 2) {
+				// 			tmp += "&nbsp;";
+				// 			count = 0;
+				// 		}
+				// 	});
+				//
+				// 	if (select === "word") {
+				// 		setCheckSpeaking(tmp.trim());
+				// 	} else {
+				// 		setCheckSentence(tmp.trim());
+				// 	}
+				//
+				// 	// checkSpeaking
+				// } else {
+				// 	alert("Error from server!");
+				// }
 			} catch (error) {
 				console.error("Error sending audio data:", error);
 				alert("Failed to send audio data!");

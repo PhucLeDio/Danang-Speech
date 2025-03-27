@@ -113,13 +113,14 @@ const Mispronounce = ({ name, language }) => {
 						width: "80%",
 						borderBottom: "1px solid #ABA6A6",
 						borderBottomWidth: "40%",
-						fontSize: "20px",
+						fontSize: "18px",
 						fontWeight: "bold",
 						display: "flex",
 						justifyContent: "center",
 						alignItems: "center",
 						alignContent: "center",
-						whiteSpace: "pre-wrap"
+						whiteSpace: "pre-wrap",
+						textAlign: "center"
 
 					}}>{selectSentence(name)}</div>
 					<div style={{
@@ -127,10 +128,11 @@ const Mispronounce = ({ name, language }) => {
 						width: "80%",
 						borderTop: "1px solid #ABA6A6",
 						borderWidth: "40%",
-						fontSize: "20px",
+						fontSize: "18px",
 						fontWeight: "bold",
 						whiteSpace: "pre-wrap",
-						wordBreak: "break-word"
+						wordBreak: "break-word",
+						textAlign: "center"
 					}} dangerouslySetInnerHTML={{ __html: checkSentence }}></div>
 				</div>
 			</div>

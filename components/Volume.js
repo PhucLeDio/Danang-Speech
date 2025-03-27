@@ -6,7 +6,7 @@ import "../components/style/Volume.css";
 import "../style.css"
 
 const Volume = ({ isList, name, isLabel, language, setLanguage }) => {
-	const [speed, setSpeed] = useState(1.0);
+	const [speed, setSpeed] = useState(0.8);
 	// get text
 	// const { isList, name, isLabel } = props;
 	const audioRef = useRef(null);
