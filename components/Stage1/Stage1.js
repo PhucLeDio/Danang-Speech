@@ -100,8 +100,8 @@ const Stage1 = ({ activeLabel, labels, language, handleClick, getText }) => {
 						}}>
 						<div style={{ paddingBottom: "10px" }}>
 							<Label
-								height={"60px"}
-								width={"90%"}
+								height={"70px"}
+								width={"100%"}
 								fontPadding={"10px"}
 								text={language === 'VIE' ? `<div style="display: inline-block; padding: 3px 15px; background-color: #0070D9; color: #FFF6C8; border-radius: 30px;">
 									Ví dụ
